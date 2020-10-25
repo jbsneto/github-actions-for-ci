@@ -1,1 +1,2 @@
-name: Fluxo de trabalho de aprovação do Team awesome
+name: Team awesome's approval workflow
+on: pull_request_review
