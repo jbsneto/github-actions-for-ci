@@ -14,18 +14,19 @@ jobs:
         run: |
           npm install
           npm run build
-        # Armazenamento de artefato, quando um teste depende do produto de outro
+        # Armazenamento de artefato. usado pq o test depende do produto do resultado do build
       - uses: actions/upload-artifact@master
         with:
           name: webpack artifacts
           path: public/
           
   test:
+    # so pode ser executado depois do build
     needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    # permite que 
+    # permite puxar o produto de trabalhos anteriores do armazenamento
     - uses: actions/download-artifact@master
       with: 
         name: webpack artifacts
